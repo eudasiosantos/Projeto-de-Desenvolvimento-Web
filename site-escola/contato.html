@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - E.E.F. Melvin Jones</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/dynamic.js" defer></script>
+</head>
+
+<body>
+  <header class="topo">
+    <div class="container topo-conteudo">
+      <div class="logo-area">
+        <img src="img/logo.png" alt="Logo da Escola" class="logo-imagem">
+        <div class="logo-texto">
+          <h1>E.E.F. Melvin Jones</h1>
+          <p>Escola Municipal</p>
+        </div>
+      </div>
+
+      <button class="btn-menu-mobile" aria-label="Abrir Menu">☰</button>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="contato.html" class="ativo">Contato</a>
+        <a href="login.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container pagina-interna">
+    <section class="cabecalho-pagina">
+      <h2>Contato</h2>
+    </section>
+
+    <section class="contato-grid">
+      <div class="contato-info">
+        <h3>Informações de contato</h3>
+
+        <div class="info-item">
+          <div class="info-icone">📞</div>
+          <div>
+            <span>Telefone</span>
+            <p>(85) 9860-6328</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icone">✉️</div>
+          <div>
+            <span>E-mail</span>
+            <p>melvinjonesescola@yahoo.com.br</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icone">📍</div>
+          <div>
+            <span>Endereço</span>
+            <p>Rua Professor Raimundo Martins, 1405 – Bairro Capitão Pedro Sampaio, Canindé – CE, CEP 62700-000</p>
+          </div>
+        </div>
+
+        <div class="redes-sociais">
+          <h4>Redes Sociais</h4>
+          <div class="redes-botoes">
+            <a href="#">f</a>
+            <a href="#">◎</a>
+            <a href="#">▶</a>
+          </div>
+        </div>
+
+        <div class="mapa-box">
+          <img src="img/mapa.jpg" alt="Mapa da localização da escola">
+        </div>
+      </div>
+
+      <div class="contato-formulario">
+        <h3>Envie uma mensagem</h3>
+
+        <form id="form-contato">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" placeholder="João da Silva">
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="joao@email.com">
+
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" rows="8" placeholder="Escreva sua mensagem..."></textarea>
+
+          <button type="submit">Enviar Mensagem</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape-grid">
+      <div>
+        <h3>E.E.F. Melvin Jones</h3>
+        <p>Formando cidadãos comprometidos com o conhecimento e o respeito desde 1968.</p>
+      </div>
+
+      <div>
+        <h3>Links Rápidos</h3>
+        <a href="index.html">Home</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="contato.html">Contato</a>
+      </div>
+
+      <div>
+        <h3>Contato</h3>
+        <p>(85) 9860-6328 </p>
+        <p>melvinjonesescola@yahoo.com.br</p>
+        <p>Rua Professor Raimundo Martins, 1405 – Bairro Capitão Pedro Sampaio, Canindé – CE, CEP 62700-000</p>
+      </div>
+    </div>
+
+    <div class="rodape-final">
+      <p>© 2026 E.E.F. Melvin Jones. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo - E.E.F. Melvin Jones</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/admin.js" defer></script>
+</head>
+
+<body class="admin-body">
+  <main class="admin-container">
+    <section class="admin-topo">
+      <div>
+        <h1>Painel Administrativo</h1>
+        <p>E.E.F. Melvin Jones</p>
+      </div>
+      <a href="#" id="btn-sair" class="admin-sair">Sair</a>
+    </section>
+
+    <section class="admin-abas">
+      <button class="aba" data-secao="dashboard">Dashboard</button>
+      <button class="aba" data-secao="noticias">Notícias</button>
+      <button class="aba" data-secao="avisos">Avisos</button>
+      <button class="aba" data-secao="eventos">Eventos</button>
+      <button class="aba ativa" data-secao="mensagens">Mensagens</button>
+    </section>
+
+    <section id="dashboard" class="admin-secao">
+      <div class="cards-resumo">
+        <article class="card-resumo card-noticias">
+          <div class="card-icone">📰</div>
+          <div class="card-numero" id="total-noticias">0</div>
+          <div class="card-legenda">Notícias</div>
+        </article>
+
+        <article class="card-resumo card-avisos">
+          <div class="card-icone">🔔</div>
+          <div class="card-numero" id="total-avisos">0</div>
+          <div class="card-legenda">Avisos</div>
+        </article>
+
+        <article class="card-resumo card-eventos">
+          <div class="card-icone">📅</div>
+          <div class="card-numero" id="total-eventos">0</div>
+          <div class="card-legenda">Eventos</div>
+        </article>
+
+        <article class="card-resumo card-mensagens">
+          <div class="card-icone">✉️</div>
+          <div class="card-numero" id="total-mensagens">0</div>
+          <div class="card-legenda">Mensagens</div>
+        </article>
+      </div>
+
+      <div class="acoes-principais">
+        <button class="botao-admin" data-ir-para="noticias">+ Nova Notícia</button>
+        <button class="botao-admin verde" data-ir-para="eventos">+ Novo Evento</button>
+        <button class="botao-admin roxo" data-ir-para="avisos">+ Novo Aviso</button>
+      </div>
+
+      <section id="mensagens" class="bloco-secao">
+        <h2>Mensagens Recentes</h2>
+
+        <div class="lista-mensagens">
+          <!-- Mensagens renderizadas pelo admin.js -->
+        </div>
+      </section>
+    </section>
+
+    <section id="noticias" class="admin-secao secao-oculta">
+      <div class="cabecalho-gerencia">
+        <h2>Gerenciar Notícias</h2>
+        <button class="botao-novo" data-ir-para="form-noticia">+ Novo</button>
+      </div>
+
+      <div class="tabela-box">
+        <table id="tabela-noticias">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Data</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Notícias renderizadas pelo admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <section id="form-noticia" class="form-bloco">
+        <h3>Nova Notícia</h3>
+        <form class="admin-form" id="form-noticia-add">
+          <input type="text" id="noticiaTitulo" placeholder="Título da notícia" required>
+          <input type="date" id="noticiaData" required>
+          <input type="text" id="noticiaCategoria" placeholder="Categoria" required>
+          <input type="text" id="noticiaImagem" placeholder="Link da imagem (opcional)">
+          <textarea id="noticiaResumo" rows="5" placeholder="Resumo da notícia" maxlength="450" required></textarea>
+          <button type="submit">Salvar Notícia</button>
+        </form>
+      </section>
+    </section>
+
+    <section id="avisos" class="admin-secao secao-oculta">
+      <div class="cabecalho-gerencia">
+        <h2>Gerenciar Avisos</h2>
+        <button class="botao-novo" data-ir-para="form-aviso">+ Novo</button>
+      </div>
+
+      <div class="tabela-box">
+        <table id="tabela-avisos">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Data</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Avisos renderizados pelo admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <section id="form-aviso" class="form-bloco">
+        <h3>Novo Aviso</h3>
+        <form class="admin-form" id="form-aviso-add">
+          <input type="text" id="avisoTitulo" placeholder="Título do aviso" required>
+          <input type="text" id="avisoData" placeholder="Período ou data" required>
+          <textarea id="avisoDescricao" rows="5" placeholder="Descrição do aviso" required></textarea>
+          <button type="submit">Salvar Aviso</button>
+        </form>
+      </section>
+    </section>
+
+    <section id="eventos" class="admin-secao secao-oculta">
+      <div class="cabecalho-gerencia">
+        <h2>Gerenciar Eventos</h2>
+        <button class="botao-novo" data-ir-para="form-evento">+ Novo</button>
+      </div>
+
+      <div class="tabela-box">
+        <table id="tabela-eventos">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Data</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Eventos renderizados pelo admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <section id="form-evento" class="form-bloco">
+        <h3>Novo Evento</h3>
+        <form class="admin-form" id="form-evento-add">
+          <input type="text" id="eventoTitulo" placeholder="Título do evento" required>
+          <input type="date" id="eventoData" required>
+          <input type="time" id="eventoHorario" required>
+          <input type="text" id="eventoLocal" placeholder="Local" required>
+          <textarea id="eventoDescricao" rows="5" placeholder="Descrição do evento" required></textarea>
+          <button type="submit">Salvar Evento</button>
+        </form>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>
