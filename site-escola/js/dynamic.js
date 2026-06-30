@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       snapshot.forEach(doc => {
         todasNoticias.push(doc.data());
       });
-      // Aplica o filtro atual ao receber novos dados
+      
       if (inputBusca && inputBusca.value) {
         const termo = inputBusca.value.toLowerCase();
         noticiasFiltradas = todasNoticias.filter(n => 
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
           n.titulo.toLowerCase().includes(termo) || 
           (n.resumo && n.resumo.toLowerCase().includes(termo))
         );
-        limite = 4; // Reseta o limite de exibição sempre que busca algo novo
+        limite = 4;
         renderNoticias();
       });
     }
