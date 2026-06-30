@@ -4,7 +4,6 @@ function formatarDataBR(dataISO) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Menu Mobile Toggle
   const btnMenuMobile = document.querySelector('.btn-menu-mobile');
   const menu = document.querySelector('.menu');
   if (btnMenuMobile && menu) {
