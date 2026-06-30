@@ -287,7 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = doc.data();
         let init = data.nome ? data.nome.charAt(0).toUpperCase() : '?';
         
-        // Formatar data se existir (fallback para string)
         let dataStr = "";
         if (data.criadoEm) {
             const dateObj = data.criadoEm.toDate();
@@ -310,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Função global de exclusão
   window.excluirDocumento = function(colecao, id) {
     if (confirm("Tem certeza que deseja excluir?")) {
       db.collection(colecao).doc(id).delete()
