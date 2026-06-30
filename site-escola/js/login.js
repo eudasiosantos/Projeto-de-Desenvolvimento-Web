@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Verifica se já está logado
   auth.onAuthStateChanged(user => {
     if (user) {
-      // Se já está logado, redireciona para o admin
       window.location.href = 'admin.html';
     }
   });
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     auth.signInWithEmailAndPassword(email, senha)
       .then((userCredential) => {
-        // Login com sucesso, o onAuthStateChanged fará o redirecionamento
+        // Login correto o onAuthStateChanged redireciona
       })
       .catch((error) => {
         const errorCode = error.code;
